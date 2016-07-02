@@ -20,18 +20,12 @@ app.post('/create-post', function(req, res) {
 
 app.get('/get-posts', function(req, res) {
 	res.sendFile(jsonPath, parsedFile, function(error){});
-	console.log(parsedFile);
 });
 
 app.get('/posts/:postId', function (req, res) {
 	fs.readFile(jsonPath, function (error, file) {
 		var parsedFile = JSON.parse(file);
-
-		for (var key in parsedFile) {
-			if (key === req.params.postId) {
-				res.send('post id: ', parsedFile[key]);
-			}
-		}
+		res.send('post id: ', parsedFile[req.params.postId]);
 	});
 });
 
