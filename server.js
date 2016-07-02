@@ -3,10 +3,10 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 
 var app = express();
-var jsonPath = __dirname + '/express-workshop/data/posts.json';
+var jsonPath = __dirname + '/data/posts.json';
 var parsedFile;
 
-app.use(express.static("express-workshop/public"));
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/create-post', function(req, res) {
