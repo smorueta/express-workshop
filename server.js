@@ -10,7 +10,11 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/create-post', function(req, res) {
-	readFile(req);
+	fs.readFile(jsonPath, function (error, file) {
+		parsedFile = JSON.parse(file);
+		parsedFile[Date.now()] = req.body.blogpost;
+		writeFile();
+	});
 	res.redirect('/');
 });	
 
@@ -19,11 +23,21 @@ app.get('/get-posts', function(req, res) {
 	console.log(parsedFile);
 });
 
+app.get('/posts/:postId', function (req, res) {
+	fs.readFile(jsonPath, function (error, file) {
+		var parsedFile = JSON.parse(file);
+
+		for (var key in parsedFile) {
+			if (key === req.params.postId) {
+				res.send('post id: ', parsedFile[key]);
+			}
+		}
+	});
+});
+
 function readFile(req) {
 	fs.readFile(jsonPath, function (error, file) {
-		parsedFile = JSON.parse(file);
-		parsedFile[Date.now()] = req.body.blogpost;
-		writeFile();
+		return JSON.parse(file);
 	});
 }
 
