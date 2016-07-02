@@ -1,0 +1,22 @@
+{
+  "name": "express-workshop",
+  "version": "1.0.0",
+  "description": "Exercises from express-workshop",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "respository": {
+    "type": "git",
+    "url": "https://github.com/smorueta/express-workshop.git"
+  },
+  "author": "smorueta",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
+  }
+}
